@@ -1,0 +1,33 @@
+<h1>Dont have an account?</h1>
+<h3>Sign up Here </h3>
+
+<%= form_with(model: @user, local: true, data: { turbo: false }) do |form| %>
+ <% if @user.errors.any? %>
+    <div class="alert alert-danger">
+      <% @user.errors.full_messages.each do |message| %>
+        <div> <%= message %> </div>
+      <%end%>
+    </div>
+  <%end%>
+
+  <div>
+    <%= form.label :Name %><br>
+    <%= form.text_field :name, autocomplete: "name"  %>
+  </div>
+  <div>
+    <%= form.label :email %><br>
+    <%= form.email_field :email, autocomplete: "email" %>
+  </div>
+  <div>
+    <%= form.label :password %><br>
+    <%= form.password_field :password, autocomplete: "new-password"  %>
+  </div>
+  <div>
+    <%= form.label :password_confirmation %><br>
+    <%= form.password_field :password_confirmation, autocomplete: "new-password"  %>
+  </div>
+  <div>
+   <%= form.submit "SignUp", class:"btn btn-primary m-1"  %>
+   <%= link_to "Login", root_path, class:"btn btn-primary m-1" %>
+  </div>
+<%end%>

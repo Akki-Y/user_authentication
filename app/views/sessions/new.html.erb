@@ -1,0 +1,19 @@
+<h1>Creating user authentication</h1>
+<h4>Creating login page</h4>
+
+<%= form_with(url: login_path, local: true,data: { turbo: false }) do |form| %>
+  
+  <div>
+    <%= form.label :email %><br>
+    <%= form.email_field :email, autofocus: true %>
+  </div>
+  <div>
+    <%= form.label :password %><br>
+    <%= form.password_field :password %>
+  </div>
+  <div>
+    <%= form.submit "Login", class:"btn btn-primary m-1" %>
+    <%= link_to "Signup", new_user_path, class:"btn btn-primary" %><br>
+    <%= form.submit "Forgot Password" %>
+  </div>
+<%end%>
